@@ -7,7 +7,7 @@ public class FleePointer : MonoBehaviour
 {
     public Transform target;
     public float moveSpeed = 6.0f;
-    private float maxDistance = 15.0f;
+    private float maxDistance = 5.0f;
 
     void Start()
     {
