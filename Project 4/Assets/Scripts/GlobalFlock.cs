@@ -1,4 +1,5 @@
 ﻿
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class GlobalFlock : MonoBehaviour
     static int numLeaves = 100;
     public static GameObject[] allLeaves = new GameObject[numLeaves];
 
-
+    public static Vector3 goalPos = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,9 @@ public class GlobalFlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Random.Range(0, 1000) < 50)
+        {
+            goalPos = new Vector3(Random.Range(-tankSize, tankSize), Random.Range(-tankSize, tankSize), Random.Range(-tankSize, tankSize));
+        }
     }
 }
