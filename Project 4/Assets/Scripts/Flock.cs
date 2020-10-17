@@ -12,6 +12,8 @@ public class Flock : MonoBehaviour
     Vector3 averagePosition;
     float neighbourDistance = 2.0f;
 
+    bool turning = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,29 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Random.Range(0, 5) < 1)
+        if (Vector3.Distance(transform.position, Vector3.zero) >= GlobalFlock.tankSize)
         {
-            ApplyRules();
+            turning = true;
         }
-        transform.Translate(0, 0, Time.deltaTime * speed);
+        else
+        {
+            turning = false;
+        }
+        if (turning)
+        {
+            Vector3 direction = Vector3.zero - transform.position;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+            speed = Random.Range(0.5f, 1);
+        }
+        else
+        {
+            if (Random.Range(0, 5) < 1)
+            {
+                ApplyRules();
+            }
+            transform.Translate(0, 0, Time.deltaTime * speed);
+        }
+        
     }
     void ApplyRules()
     {

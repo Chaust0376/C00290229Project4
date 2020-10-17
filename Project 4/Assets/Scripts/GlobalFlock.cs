@@ -9,7 +9,7 @@ public class GlobalFlock : MonoBehaviour
     public GameObject leafPrebab;
     public static int tankSize = 5;
 
-    static int numLeaves = 100;
+    static int numLeaves = 15;
     public static GameObject[] allLeaves = new GameObject[numLeaves];
 
     public static Vector3 goalPos = Vector3.zero;
